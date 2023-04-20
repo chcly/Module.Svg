@@ -20,17 +20,35 @@
 -------------------------------------------------------------------------------
 */
 #pragma once
+#include "Definitions.h"
+#include "Utils/HashMap.h"
 #include "Utils/Stack.h"
 #include "Utils/String.h"
 
 namespace Rt2::Svg
 {
-    struct StyleData
+    class Style
     {
-        StringArray style;
-        StringMap   attrs;
+    private:
+        StringMap _style;
+
+    public:
+        Style();
+        ~Style();
+
+        void clear();
+
+        void fill(const Color& c);
+        void stroke(const Color& c, Real w);
+
+        String toString();
+        String toStyleSheet(const String& id);
+
+        bool empty() const { return _style.empty(); }
+
+        void set(const String& str, const String& val);
     };
 
-    using StyleStack = Stack<StyleData>;
-
-}  // namespace Rt2::Html
+    using StyleStack = Stack<Style>;
+    using StyleTable = HashTable<String, Style*>;
+}  // namespace Rt2::Svg
