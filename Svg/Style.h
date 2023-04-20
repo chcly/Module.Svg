@@ -31,23 +31,40 @@ namespace Rt2::Svg
     {
     private:
         StringMap _style;
+        String    _id{};
 
     public:
-        Style();
+        Style() = default;
+        explicit Style(String id);
         ~Style();
+
+        const String& id();
 
         void clear();
 
+        bool empty() const;
+
         void fill(const Color& c);
+
         void stroke(const Color& c, Real w);
 
         String toString();
+
         String toStyleSheet(const String& id);
 
-        bool empty() const { return _style.empty(); }
 
         void set(const String& str, const String& val);
     };
+
+    inline const String& Style::id()
+    {
+        return _id;
+    }
+
+    inline bool Style::empty() const
+    {
+        return _style.empty();
+    }
 
     using StyleStack = Stack<Style>;
     using StyleTable = HashTable<String, Style*>;

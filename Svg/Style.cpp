@@ -42,7 +42,10 @@ namespace Rt2::Svg
         return oss.str();
     }
 
-    Style::Style() = default;
+    Style::Style(String id) :
+        _id(std::move(id))
+    {
+    }
 
     Style::~Style() = default;
 

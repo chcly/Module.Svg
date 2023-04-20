@@ -41,6 +41,8 @@ namespace Rt2::Svg
         void writeStyles();
 
 
+        void useStyle(Style *style);
+
         void useStyle(const String& str);
 
     private:

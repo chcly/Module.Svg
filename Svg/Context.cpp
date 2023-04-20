@@ -6,7 +6,6 @@ namespace Rt2::Svg
 {
     Context::Context(OStream* stream)
     {
-        _out.bind(&std::cout);
         _out._push(stream);
     }
 
@@ -116,10 +115,10 @@ namespace Rt2::Svg
         copy();
         Style& data = top();
 
-        const Real rx = w / 2;
-        const Real ry = h / 2;
-        const Real cx = x + rx;
-        const Real cy = y + ry;
+        const Real rx       = w / 2;
+        const Real ry       = h / 2;
+        const Real cx       = x + rx;
+        const Real cy       = y + ry;
         const bool hasStyle = !data.empty() || !_id.empty();
 
         _out.print("<ellipse ",
@@ -146,6 +145,12 @@ namespace Rt2::Svg
         for (const auto& v : _table)
             _out.print(v.second->toStyleSheet(v.first));
         _out.print("</style>");
+    }
+
+    void Context::useStyle(Style* style)
+    {
+        if (style)
+            _id = style->id();
     }
 
     void Context::useStyle(const String& str)

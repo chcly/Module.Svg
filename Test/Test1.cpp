@@ -12,16 +12,16 @@ GTEST_TEST(SVG, Test_001)
     Context ctx(&ofs);
     ctx.open(512, 512);
 
-    Style *a = ctx.style("a");
-    a->fill({0,0,0xFF,0xFF});
-    a->stroke({0x55,0x55,0xFF,0x80}, 5);
+    Style* a = ctx.style("a");
+    a->fill({0, 0, 0xFF, 0xFF});
+    a->stroke({0x55, 0x55, 0xFF, 0x80}, 5);
 
-    Style *b = ctx.style("b");
-    b->fill({0x0,0x0,0x0,0xFF});
-    b->stroke({0x22,0x22,0xFF,0x80}, 4);
+    Style* b = ctx.style("b");
+    b->fill({0x0, 0x0, 0x0, 0xFF});
+    b->stroke({0x22, 0x22, 0xFF, 0x80}, 4);
 
-    Style *c = ctx.style("c");
-    c->fill({0xFF,0xFF,0xFF,0x50});
+    Style* c = ctx.style("c");
+    c->fill({0xFF, 0xFF, 0xFF, 0x50});
 
     ctx.writeStyles();
 
@@ -35,6 +35,6 @@ GTEST_TEST(SVG, Test_001)
     ctx.ellipse(192, 192, 128, 128);
     ctx.useStyle("c");
     ctx.ellipse(200, 156, 64, 64);
-    
+
     ctx.close();
 }
