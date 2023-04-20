@@ -1,15 +1,19 @@
 #include <cstdio>
+#include "Svg/Context.h"
 #include "gtest/gtest.h"
-#include "ThisDir.h"
 
-GTEST_TEST(Test1, AlwaysTrue)
-{
-    puts(CurrentBuildDirectory);
-    puts(TestFile("inp.ans"));
-    EXPECT_EQ(1, 1);
-}
+using namespace Rt2::Svg;
 
-GTEST_TEST(Test1, AlwaysFalse)
+GTEST_TEST(SVG, Test_001)
 {
-    EXPECT_NE(1, 0);
+    Rt2::OutputFileStream ofs;
+    ofs.open("Test_001.svg");
+
+    Context ctx(&ofs);
+    ctx.open(512, 512);
+    ctx.strokeColor(Color{0xFF, 0x00, 0xFF, 0xFF}, 5);
+    ctx.fillColor(Color{0xFF, 0xFF, 0xFF, 0xFF});
+    ctx.ellipse(20, 20, 200, 200);
+
+    ctx.close();
 }

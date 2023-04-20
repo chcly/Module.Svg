@@ -44,4 +44,12 @@ configure_gtest(${Svg_SOURCE_DIR}/Test/googletest
                 ${Svg_SOURCE_DIR}/Test/googletest/googletest/include)
 
 
+DefineExternalTargetEx(
+    Utils Extern
+    ${Svg_SOURCE_DIR}/Internal/Utils 
+    ${Svg_SOURCE_DIR}/Internal/Utils
+    ${Svg_BUILD_TEST}
+    ${Svg_AUTO_RUN_TEST}
+)
+
 set(Configure_SUCCEEDED TRUE)

@@ -32,6 +32,8 @@ if (Svg_ExternalTarget)
     set(TargetGroup   ${Svg_TargetGroup})
 else()
     add_subdirectory(CMake)
+    add_subdirectory(Internal/Utils)
+    include(${Utils_SOURCE_DIR}/CMake/Locals.cmake)
 
     set(TargetFolders TRUE)
     set(TargetName Svg)
