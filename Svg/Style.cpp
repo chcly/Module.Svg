@@ -25,7 +25,6 @@
 
 namespace Rt2::Svg
 {
-
     String toStyle(StringMap& pairs)
     {
         OutputStringStream oss;
@@ -38,7 +37,7 @@ namespace Rt2::Svg
     String colorOp(const Color& color)
     {
         OutputStringStream oss;
-        oss << color;
+        Ts::print(oss, color);
         return oss.str();
     }
 
@@ -73,7 +72,7 @@ namespace Rt2::Svg
     String Style::toStyleSheet(const String& id)
     {
         OutputStringStream oss;
-        oss << "." << id << "{" << toStyle(_style) << "}";
+        Ts::print(oss, '.', id, '{', toStyle(_style), '}');
         return oss.str();
     }
 
